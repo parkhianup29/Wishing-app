@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Get Well Soon</title>
+  <style>
+    /* Use a more "cartoonish" style by falling back to Comic Sans or cursive if unavailable. */
+    /* Instead of an image, let's use a fancy radial gradient to give it a "premium" vibe. */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive;
+      /* A radial gradient that transitions from lighter in the center to darker on the edges */
+      background: radial-gradient(circle, #fff6f9, #fce4ec 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden; /* so floating flowers remain within view */
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      z-index: 1; /* place above floating flowers */
+    }
+
+    /* "Tap to Reveal" button styling */
+    #revealButton {
+      background-color: #ec407a;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      padding: 16px 32px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      outline: none;
+      animation: pulsing 2s infinite; /* Make the button gently pulse */
+    }
+
+    #revealButton:hover {
+      opacity: 0.9;
+    }
+
+    /* Keyframes for a subtle pulsing animation on the button */
+    @keyframes pulsing {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.07);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* The card container */
+    #message {
+      /* Start invisible and shrunk */
+      opacity: 0;
+      transform: scale(0.6) translateY(30px);
+      transform-origin: center center;
+      margin-top: 40px;
+      font-size: 2rem;
+      color: #880e4f;
+      background: linear-gradient(135deg, #fff6f9, #ffffff);
+      padding: 30px 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      border: 3px solid #ec407a;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Trigger a refined bounce in when revealed */
+    #message.show {
+      animation: bounceIn 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+    }
+
+    /* Bouncy entrance keyframes */
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0.6) translateY(30px);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.1) translateY(-10px);
+        opacity: 1;
+      }
+      70% {
+        transform: scale(0.95) translateY(5px);
+      }
+      100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Container for floating flowers */
+    .flower-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* So user can still click the button */
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .flower {
+      position: absolute;
+      top: 100%;
+      font-size: 2.5rem;
+      opacity: 0;
+      animation: floatUp 10s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating flowers -->
+  <div class="flower-container">
+    <!-- You can add more flowers or adjust delays/positions for variety -->
+    <div class="flower" style="left: 10%; animation-delay: 0s;">🌸</div>
+    <div class="flower" style="left: 30%; animation-delay: 2s;">🌼</div>
+    <div class="flower" style="left: 50%; animation-delay: 4s;">🌸</div>
+    <div class="flower" style="left: 70%; animation-delay: 6s;">🌻</div>
+    <div class="flower" style="left: 90%; animation-delay: 8s;">🌷</div>
+  </div>
+
+  <div class="container">
+    <h1>Get Well Soon!</h1>
+    <button id="revealButton">Tap to Reveal</button>
+    <div id="message">
+      <h2 style="margin-bottom: 0.5em;">Stay Strong and Bounce Back!</h2>
+      <p style="margin: 0;">
+        I believe in your power to rise above any challenge. You’ve got this!<br/>
+        Cannot wait to see you shining brighter than ever, <strong>champ</strong>!
+        <span style="font-size: 1.3em;">💪✨</span>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const revealButton = document.getElementById('revealButton');
+    const message = document.getElementById('message');
+
+    revealButton.addEventListener('click', () => {
+      // Add the 'show' class to animate the card in
+      message.classList.add('show');
+
+      // Optionally hide the button after clicking
+      revealButton.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
