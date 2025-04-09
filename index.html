@@ -148,7 +148,7 @@
   </div>
 
   <div class="container" style="font-size: 3rem;">
-    <h1>Anup sent a message to you</h1>
+    <h1 id="heading">Anup sent a message to you</h1>
     <button id="revealButton" style="font-size: 3rem;">Tap to Reveal</button>
     <div id="message">
       <h2 style="margin-bottom: 0.5em;">Stay Strong and Bounce Back!</h2>
@@ -163,10 +163,12 @@
   <script>
     const revealButton = document.getElementById('revealButton');
     const message = document.getElementById('message');
+    const heading = document.getElementById('heading');
 
     revealButton.addEventListener('click', () => {
       // Add the 'show' class to animate the card in
       message.classList.add('show');
+      heading.innerHTML = "Get Well Soon!";
 
       // Optionally hide the button after clicking
       revealButton.style.display = 'none';
